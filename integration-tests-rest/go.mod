@@ -1,4 +1,4 @@
-module github.com/nikit34/uzum-qaa-test-task/integration-tests-2
+module github.com/nikit34/uzum-qaa-test-task/integration-tests-rest
 
 go 1.21
 
