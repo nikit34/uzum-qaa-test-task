@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/require"
-	"github.com/nikit34/uzum-qaa-test-task/integration-tests/util"
+	"github.com/nikit34/uzum-qaa-test-task/integration-tests-db/util"
 )
 
 func createRandomTransfer(t *testing.T, account1, account2 Account) Transfer {

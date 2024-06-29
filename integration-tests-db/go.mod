@@ -1,4 +1,4 @@
-module github.com/nikit34/uzum-qaa-test-task/integration-tests
+module github.com/nikit34/uzum-qaa-test-task/integration-tests-db
 
 go 1.22
 
