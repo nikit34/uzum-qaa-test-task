@@ -27,7 +27,7 @@ url: `jdbc:postgresql://localhost:5432/simple_bank`
 username: `root`
 
 password: `secret`
-
-
-
-make sqlc
+## Run tests
+```bash
+make test
+```
