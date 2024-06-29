@@ -1,7 +1,7 @@
 .DS_Store
 
-venv/
+e2e-tests/venv/
 
-log.html
-output.xml
-report.html
+e2e-tests/log.html
+e2e-tests/output.xml
+e2e-tests/report.html
