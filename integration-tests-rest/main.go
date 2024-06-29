@@ -1,10 +1,19 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
+	"os"
 	"time"
+
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/postgres"
+
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+	_ "github.com/lib/pq"
 )
 
 type health struct {
@@ -13,6 +22,26 @@ type health struct {
 }
 
 func main() {
+	db, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))
+	if err != nil {
+		log.Fatalf("Error making DB connected: %s", err.Error())
+	}
+
+	driver, err := postgres.WithInstance(db, &postgres.Config{})
+	if err != nil {
+		log.Fatalf("Error making DB driver: %s", err.Error())
+	}
+
+	migrator, err := migrate.NewWithDatabaseInstance(
+		"file://migrations",
+		"postgres",
+		driver,
+	)
+	if err != nil {
+		log.Fatalf("Error making migration engine: %s", err.Error())
+	}
+	migrator.Steps(2)
+
 	r := mux.NewRouter()
 
 	r.HandleFunc(
