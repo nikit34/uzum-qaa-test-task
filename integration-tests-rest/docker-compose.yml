@@ -21,7 +21,8 @@ services:
       POSTGRES_PASSWORD: testing
       POSTGRES_DB: music
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U tester"]
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U tester -d music'"]
       interval: 10s
-      timeout: 5s
-      retries: 5
+      timeout: 3s
+      retries: 3
+      start_period: 80s
