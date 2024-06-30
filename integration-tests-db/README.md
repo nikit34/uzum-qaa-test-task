@@ -19,9 +19,9 @@ Run db migration:
 make migrateup
 ```
 ## Connect to database
-> url: `jdbc:postgresql://localhost:5432/simple_bank`
-> username: `root`
-> password: `secret`
+- url: `jdbc:postgresql://localhost:5432/simple_bank`
+- username: `root`
+- password: `secret`
 ## Generate handles to the database
 ```bash
 make sqlc
