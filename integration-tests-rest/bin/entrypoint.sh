@@ -9,8 +9,8 @@ wait_for_postgres() {
     local PSQL_RET
 
     PSQL_ATTEMPTS=0
-    PSQL_ATTEMPTS_DELAY=3
-    PSQL_ATTEMPTS_MAX=10
+    PSQL_ATTEMPTS_DELAY=5
+    PSQL_ATTEMPTS_MAX=15
     PSQL_RET=1
 
     echo "Waiting for postgres"
@@ -42,6 +42,5 @@ main() {
 
     /http-service
 }
-
 
 main "$@"
