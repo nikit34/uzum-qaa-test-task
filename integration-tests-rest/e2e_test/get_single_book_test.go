@@ -1,12 +1,11 @@
 package e2e_test
 
 import (
-	"database/sql"
-	"github.com/stretchr/testify/suite"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"testing"
+
+	"github.com/stretchr/testify/suite"
 
 	_ "github.com/lib/pq"
 )
@@ -30,22 +29,19 @@ func (s *GetSingleBookSuite) TestGetBookThatDoesNotExist() {
 }
 
 func (s *GetSingleBookSuite) TestGetBookThatDoesExist() {
-	db, _ := sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	db.Exec("INSERT INTO book (isbn, name, image, genre, year_published) VALUES ('987654321', 'Testing All The Things', 'testing.jpg', 'Computing', 2021)")
-
 	c := http.Client{}
 
-	r, _ := c.Get("http://localhost:8080/book/987654321")
+	r, _ := c.Get("http://localhost:8080/book/351964302699")
 	body, _ := ioutil.ReadAll(r.Body)
 
 	s.Equal(http.StatusOK, r.StatusCode)
 
 	expBody := `{
-	"isbn": "987654321",
-	"title": "Testing All The Things",
-	"image": "testing.jpg",
+	"isbn": "351964302699",
+	"title": "Call me",
+	"image": "ball.jpg",
 	"genre": "Computing",
-	"year_published": 2021
+	"year_published": 2000
 }`
 
 	s.JSONEq(expBody, string(body))

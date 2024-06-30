@@ -56,12 +56,12 @@ func main() {
 		log.Fatalf("Error making migration engine: %s", err.Error())
 	}
 
-	if err := migrator.Steps(1); err != nil {
+	if err := migrator.Steps(2); err != nil {
 		log.Fatalf("Error making migration step: %s", err.Error())
 	}
 
 	r := mux.NewRouter()
-	
+
 	retriver := book.NewRetriever(db)
 	r.Handle("/book/{isbn}", rest.NewGetBookHandler(retriver))
 
