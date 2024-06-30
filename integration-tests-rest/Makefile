@@ -12,4 +12,10 @@ docker_build_test:
 e2e_test:
 	docker-compose exec http go test `go list ./... | grep e2e_test`
 
-.PHONY: test prepare_test_environment e2e_test
+e2e_test:
+	docker-compose exec http go test `go list ./... | grep e2e_test`
+
+unit_test:
+	docker-compose exec http go test `go list ./... | grep -v e2e_test`
+
+.PHONY: test prepare_test_environment e2e_test unit_test
