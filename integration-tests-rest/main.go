@@ -43,25 +43,21 @@ func main() {
 
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	if err != nil {
-	    log.Println(err)
+	    log.Fatalf("Error making DB driver: %s", err.Error())
 	}
-	m, err := migrate.NewWithDatabaseInstance(
+
+	migrator, err := migrate.NewWithDatabaseInstance(
 		"file://./migrations/",
 		"music",
 		driver,
 	)
 	if err != nil {
-		log.Println(err)
-	}
-	if err := m.Steps(2); err != nil {
-		log.Println(err)
+		log.Fatalf("Error making migration engine: %s", err.Error())
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS book (id serial PRIMARY KEY, isbn VARCHAR ( 255 ) NOT NULL, name VARCHAR ( 255 ) NOT NULL, image VARCHAR ( 255 ) NOT NULL, genre VARCHAR ( 255 ) NOT NULL, year_published int NOT NULL)")
-
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err := migrator.Steps(1); err != nil {
+		log.Fatalf("Error making migration step: %s", err.Error())
+	}
 
 	r := mux.NewRouter()
 
