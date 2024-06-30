@@ -5,6 +5,8 @@ In each folder you will find readme and test task documents.
 - The readme contains a description of the project in free form.
 - The test task documents is your test task with assessment criteria.
 
+**Create private repositories in your personal GitHub account with solutions**
+
 Start with the simplest task (it is in the "e2e-tests-ui" folder), finish with the most difficult one (the "integration-tests-rest" folder) in order to optimally distribute the allocated time
 
 #### Assignment evaluation criteria
@@ -16,6 +18,6 @@ Start with the simplest task (it is in the "e2e-tests-ui" folder), finish with t
 
 ---
 
-#### If you have completed all the tasks, immediately inform [Min Tuan Do](https://uzum-team.slack.com/archives/D04V7P52C4D) or [Nikita Permyakov](https://uzum-team.slack.com/archives/D04V72BRZ61) about this
+#### If you have completed all the tasks, immediately inform [Min Tuan Do](https://uzum-team.slack.com/archives/D04V7P52C4D) or [Nikita Permyakov](https://uzum-team.slack.com/archives/D04V72BRZ61) about this and send us a link to the repositories so we can check
 
 > For any inconsistencies and ambiguous interpretations of the task, please contact Nikita Permyakov (He should not give you hints or help with test tasks)
