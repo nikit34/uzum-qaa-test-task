@@ -11,10 +11,6 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/postgres"
-
-	_ "github.com/golang-migrate/migrate/v4/source/file"
 	_ "github.com/lib/pq"
 )
 
@@ -42,20 +38,11 @@ func main() {
 		log.Fatalf("Error making DB connected: %s", err.Error())
 	}
 
-	driver, err := postgres.WithInstance(db, &postgres.Config{})
-	if err != nil {
-		log.Fatalf("Error making DB driver: %s", err.Error())
-	}
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS book (id serial PRIMARY KEY, isbn VARCHAR ( 255 ) NOT NULL, name VARCHAR ( 255 ) NOT NULL, image VARCHAR ( 255 ) NOT NULL, genre VARCHAR ( 255 ) NOT NULL, year_published int NOT NULL)")
 
-	migrator, err := migrate.NewWithDatabaseInstance(
-		"file://migrations",
-		"postgres",
-		driver,
-	)
-	if err != nil {
-		log.Fatalf("Error making migration engine: %s", err.Error())
-	}
-	migrator.Steps(2)
+    if err != nil {
+        log.Fatal(err)
+    }
 
 	r := mux.NewRouter()
 
