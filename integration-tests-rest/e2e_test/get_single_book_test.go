@@ -28,6 +28,16 @@ func (s *GetSingleBookSuite) TestGetBookThatDoesNotExist() {
  	s.JSONEq(`{"code": "001", "msg": "No book with ISBN 123456789"}`, string(body))
 }
 
+func (s *GetSingleBookSuite) TestGetBookWithInvalidISBNGiven() {
+	c := http.Client{}
+
+	r, _ := c.Get("http://localhost:8080/book/1234C6789")
+	body, _ := ioutil.ReadAll(r.Body)
+
+	s.Equal(http.StatusBadRequest, r.StatusCode)
+	s.JSONEq(`{"code": "003", "msg": "ISBN is invalid"}`, string(body))
+}
+
 func (s *GetSingleBookSuite) TestGetBookThatDoesExist() {
 	c := http.Client{}
 
