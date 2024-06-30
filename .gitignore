@@ -1,7 +1,8 @@
 .DS_Store
 
-e2e-tests/venv/
+# e2e-tests-ui
+e2e-tests-ui/venv/
 
-e2e-tests/log.html
-e2e-tests/output.xml
-e2e-tests/report.html
+e2e-tests-ui/log.html
+e2e-tests-ui/output.xml
+e2e-tests-ui/report.html
