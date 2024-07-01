@@ -14,7 +14,8 @@ Start with the simplest task (it is in the "e2e-tests-ui" folder), finish with t
 - You can complete any number of points from the task, skipping those that are not required to complete the following.
 - The task will be assessed on the quality of the code and the scalability of the solution, and not on the number of tests.
 - The main goal is to cover with tests the same thing that is already covered.
-- All tests should be presented in one repository, dividing them as you see fit. ***There is no condition for dividing tests into tasks***
+- Follow the commit history because reviewers will rely on it
+- All tests should be presented in one repository, dividing them as you see fit. **There is no condition for dividing tests into tasks**
 
 ---
 
